@@ -18,6 +18,14 @@ func Part1(ds []Dimensions) int {
 	return total
 }
 
+func Part2(ds []Dimensions) int {
+	var total int
+	for _, d := range ds {
+		total += d.ribbon()
+	}
+	return total
+}
+
 func (d Dimensions) wrappingPaper() int {
 	sides := []int{
 		d.L * d.W,
@@ -30,6 +38,16 @@ func (d Dimensions) wrappingPaper() int {
 		paper += 2 * n
 	}
 	return paper
+}
+
+func (d Dimensions) ribbon() int {
+	sides := []int{
+		d.L + d.W,
+		d.W + d.H,
+		d.H + d.L,
+	}
+
+	return 2*advent2015.MinInts(sides) + d.L*d.W*d.H
 }
 
 func ParseDimensions(in []string) ([]Dimensions, error) {
