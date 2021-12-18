@@ -25,6 +25,15 @@ var part1Tests = []struct {
 	{input, 232},
 }
 
+var part2Tests = []struct {
+	in  string
+	out int
+}{
+	{")", 1},
+	{"()())", 5},
+	{input, 1783},
+}
+
 func TestPart1(t *testing.T) {
 	for _, tt := range part1Tests {
 		tt := tt
@@ -33,6 +42,23 @@ func TestPart1(t *testing.T) {
 			t.Parallel()
 
 			out, err := day01.Part1(tt.in)
+			if err != nil {
+				t.Error(err)
+			}
+
+			assert.Equal(t, tt.out, out)
+		})
+	}
+}
+
+func TestPart2(t *testing.T) {
+	for _, tt := range part2Tests {
+		tt := tt
+
+		t.Run(tt.in, func(t *testing.T) {
+			t.Parallel()
+
+			out, err := day01.Part2(tt.in)
 			if err != nil {
 				t.Error(err)
 			}
