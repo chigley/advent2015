@@ -17,4 +17,5 @@ func TestDay05(t *testing.T) {
 	}
 
 	assert.Equal(t, 238, day05.Part1(in))
+	assert.Equal(t, 69, day05.Part2(in))
 }
