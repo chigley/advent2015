@@ -12,11 +12,13 @@ const input = ">^^v^<>v<<<v<v^>>v^^^<v<>^^><^<<^vv>>>^<<^>><vv<<v^<^^><>>><>v<><
 var tests = []struct {
 	in    string
 	part1 int
+	part2 int
 }{
-	{">", 2},
-	{"^>v<", 4},
-	{"^v^v^v^v^v", 2},
-	{input, 2592},
+	{">", 2, 2},
+	{"^>v<", 4, 3},
+	{"^v^v^v^v^v", 2, 11},
+	{"^v", 2, 3},
+	{input, 2592, 2360},
 }
 
 func TestDay03(t *testing.T) {
@@ -31,7 +33,13 @@ func TestDay03(t *testing.T) {
 				t.Error(err)
 			}
 
+			part2, err := day03.Part2(tt.in)
+			if err != nil {
+				t.Error(err)
+			}
+
 			assert.Equal(t, tt.part1, part1)
+			assert.Equal(t, tt.part2, part2)
 		})
 	}
 }
