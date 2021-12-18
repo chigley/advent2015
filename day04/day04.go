@@ -11,6 +11,10 @@ func Part1(secretKey string) (int, error) {
 	return findNumber(secretKey, "00000")
 }
 
+func Part2(secretKey string) (int, error) {
+	return findNumber(secretKey, "000000")
+}
+
 func findNumber(secretKey, prefix string) (int, error) {
 	h := md5.New()
 	for i := 0; ; i++ {
